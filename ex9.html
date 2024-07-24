@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>acrescimo e desconto</h1>
+    <input type="number" id="preco">
+    <input type="number" id="juros">
+    <button onclick="calcular()">butão</button>
+    <button id="showSourceButton">Mostrar Código Fonte</button>
+    <div id="saida" style="color: rgb(0, 0, 255);">..</div>    
+    <pre id="sourceCode" style="display: none;"></pre>
+
+    <script>
+        function calcular() {
+            let preco = parseFloat(document.getElementById("preco").value);
+            let juros = parseFloat(document.getElementById("juros").value);
+            let funcao1 = acrescimo(preco, juros);
+            let funcao2 = desconto(preco, juros);
+            document.getElementById("saida").innerText = 'Valor inicial: ' + preco + ' e o juros: ' + juros + ' e acrescimo: ' + funcao1 +' então o desconto: '+ funcao2;
+        }
+        function acrescimo(preco, juros) {
+            let calc = (juros / 100 * preco) + preco;
+            return calc;
+        }
+        function desconto(preco, juros) {
+            let calc = ((juros / 100 * -preco) + preco);
+            return calc;
+        }
+        document.getElementById('showSourceButton').addEventListener('click', function() {
+            // Obtém o código fonte do body
+            var sourceCode = document.documentElement.outerHTML;
+            // Exibe o código fonte no elemento <pre>
+            var preElement = document.getElementById('sourceCode');
+            preElement.textContent = sourceCode;
+            preElement.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

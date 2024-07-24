@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Numeros ao quadrado</h1>
+    <label for="num">Numero ao quadrado</label>
+    <input type="number" id="num">
+    <br>
+    <input type="button" value="calcular" onclick="calcular()">
+    <button id="showSourceButton">Mostrar Código Fonte</button>
+    <div id="saida" style="color: rgb(0, 0, 255);">..</div>
+    <pre id="sourceCode" style="display: none;"></pre>
+
+    <script>
+        function calcular(){
+            let num= parseInt(document.getElementById("num").value);
+            let s= distancia(num)
+            document.getElementById("saida").innerText=s;
+        }
+        function distancia(num) {
+        let calculo= "Seu número ao quadrado é "+num**2
+        return calculo;
+        }
+      
+        document.getElementById('showSourceButton').addEventListener('click', function() {
+            // Obtém o código fonte do body
+            var sourceCode = document.documentElement.outerHTML;
+            // Exibe o código fonte no elemento <pre>
+            var preElement = document.getElementById('sourceCode');
+            preElement.textContent = sourceCode;
+            preElement.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Pitagoras</h1>
+    <label for="vb">Valor de B</label>
+    <input type="number" id="vb">
+    <br>
+    <label for="vc">Valor de C</label>
+    <input type="number" id="vc">
+    <br>
+    <button id="showSourceButton">Mostrar Código Fonte</button>
+    <input type="button" value="calcular" onclick="calcular()">
+    <div id="saida" style="color: rgb(0, 0, 255);">..</div>  
+    <pre id="sourceCode" style="display: none;"></pre>
+  <script>
+    function calcular(){
+            let b= parseInt(document.getElementById("vb").value);
+            let c= parseInt(document.getElementById("vc").value);
+            let s= distancia(b,c)
+            document.getElementById("saida").innerText=s;
+        }
+        function distancia(b,c) {
+        let calculo= Math.sqrt((b**2+c**2))
+        
+        return calculo.toFixed(1);
+        }
+        document.getElementById('showSourceButton').addEventListener('click', function() {
+            // Obtém o código fonte do body
+            var sourceCode = document.documentElement.outerHTML;
+            // Exibe o código fonte no elemento <pre>
+            var preElement = document.getElementById('sourceCode');
+            preElement.textContent = sourceCode;
+            preElement.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
